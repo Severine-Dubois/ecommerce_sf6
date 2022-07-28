@@ -13,6 +13,7 @@
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            
         {% endblock %}
     </head>
     <body>
@@ -20,4 +21,8 @@
         {% block body %}{% endblock %}
         {% include '_partials/_footer.html.twig' %}
     </body>
+
+
+
+<script src="{{ asset('collapse.js') }}"></script>
 </html>
