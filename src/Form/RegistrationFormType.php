@@ -80,6 +80,10 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Vous devez accepter les conditions.',
                     ]),
                 ],
+                'label' => 'En m\'inscrivant, j\'accepte les conditions liées à la conservation de mes données',
+                'label_attr' => [
+                    'class' => 'mr-3 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'
+                ],
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
