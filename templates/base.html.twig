@@ -17,9 +17,11 @@
         {% endblock %}
     </head>
     <body>
-        {% include '_partials/_header.html.twig' %}
-        {% block body %}{% endblock %}
-        {% include '_partials/_footer.html.twig' %}
+        <div class="container-page">
+            {% include '_partials/_header.html.twig' %}
+            {% block body %}{% endblock %}
+            {% include '_partials/_footer.html.twig' %}
+        </div>
     </body>
     <script src="{{ asset('collapse.js') }}"></script>
 </html>

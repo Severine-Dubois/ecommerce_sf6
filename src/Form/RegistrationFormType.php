@@ -5,7 +5,9 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -17,17 +19,65 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
-            ->add('lastname')
-            ->add('firstname')
-            ->add('address')
-            ->add('zipcode')
-            ->add('city')
+            ->add('email', EmailType::class, [
+                'label' => 'Email',
+                'label_attr' => [
+                    'class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'
+                ],
+                'attr' => [
+                    'class' => 'p-1 mb-3 border-2 rounded-md border-blue-500 form-control',
+                ]
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'Nom de famille',
+                'label_attr' => [
+                    'class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'
+                ],
+                'attr' => [
+                    'class' => 'p-1 mb-3 border-2 rounded-md border-blue-500 form-control',
+                ]
+            ])
+            ->add('firstname', TextType::class, [
+                'label' => 'Prénom',
+                'label_attr' => [
+                    'class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'
+                ],
+                'attr' => [
+                    'class' => 'p-1 mb-3 border-2 rounded-md border-blue-500 form-control',
+                ]
+            ])
+            ->add('address', TextType::class, [
+                'label' => 'Adresse',
+                'label_attr' => [
+                    'class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'
+                ],
+                'attr' => [
+                    'class' => 'p-1 mb-3 border-2 rounded-md border-blue-500 form-control',
+                ]
+            ])
+            ->add('zipcode', TextType::class, [
+                'label' => 'Code Postal',
+                'label_attr' => [
+                    'class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'
+                ],
+                'attr' => [
+                    'class' => 'p-1 mb-3 border-2 rounded-md border-blue-500 form-control',
+                ]
+            ])
+            ->add('city', TextType::class, [
+                'label' => 'Ville',
+                'label_attr' => [
+                    'class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'
+                ],
+                'attr' => [
+                    'class' => 'p-1 mb-3 border-2 rounded-md border-blue-500 form-control',
+                ]
+            ])
             ->add('RGPDConsent', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'Vous devez accepter les conditions.',
                     ]),
                 ],
             ])
@@ -35,7 +85,13 @@ class RegistrationFormType extends AbstractType
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
+                'attr' => [
+                    'autocomplete' => 'new-password',
+                    'class' => 'p-1 mb-3 border-2 rounded-md border-blue-500 form-control',
+                ],
+                'label_attr' => [
+                    'class' => 'block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'
+                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',
