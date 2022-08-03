@@ -23,7 +23,9 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
 
     public function __construct(private UrlGeneratorInterface $urlGenerator)
     {
-        $this->urlGenerator = $urlGenerator;
+        //$this->urlGenerator = $urlGenerator;
+        // pas obligatoire d'utiliser le $this avec PHP 8, il faut préciser
+        // la visibilité de la classe dans les paramètres de la fonction
     }
 
     public function authenticate(Request $request): Passport
