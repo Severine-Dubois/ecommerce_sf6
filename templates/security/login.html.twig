@@ -21,7 +21,7 @@
             <p>Vous êtes connecté.e via {{ app.user.userIdentifier }}</p> 
             <a href="{{ path('logout') }}" class="text-blue-700 hover:underline dark:text-blue-500">Se déconnecter</a>
         </div>
-    {% endif %}
+    {% else %}
 
         <h1 class="text-xl font-medium text-gray-900 dark:text-white">Se connecter</h1>
         <div>
@@ -55,7 +55,7 @@
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
-
+    {% endif %}
     {#
         Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
         See https://symfony.com/doc/current/security/remember_me.html
