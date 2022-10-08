@@ -19,9 +19,14 @@
     <body>
         <div class="container-page">
             {% include '_partials/_header.html.twig' %}
+            {% include '_partials/_warning.html.twig' %}
+            {% include '_partials/_flash.html.twig' %}
             {% block body %}{% endblock %}
             {% include '_partials/_footer.html.twig' %}
         </div>
     </body>
     <script src="{{ asset('collapse.js') }}"></script>
+    {% if app.user and app.user.isVerified == false %}
+    <script src="{{ asset('close.js') }}"></script>
+    {% endif %}
 </html>
