@@ -20,9 +20,9 @@
 				<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ product.description }}</p>
 				<div class="flex-auto flex space-x-4">
 					{% if product.stock > 0 %}
-						<button class="h-10 px-6 font-semibold rounded-md bg-black text-white" type="submit">
+						<a href="{{ path('cart_add', {"id": product.id}) }}" class="flex items-center h-10 px-6 font-semibold rounded-md bg-black text-white" type="submit">
 							Acheter
-						</button>
+						</a>
 						<button class="h-10 px-6 font-semibold rounded-md border border-slate-200 text-slate-900" type="button">
 							Ajouter au panier
 						</button>
