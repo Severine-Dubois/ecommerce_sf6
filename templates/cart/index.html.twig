@@ -1,5 +1,86 @@
 {% extends "base.html.twig" %}
-{% block title %}| Mon panier{% endblock %}
-{% block body %}
-<h1>Mon panier</h1>
+{% block title %}| Mon panier
 {% endblock %}
+{% block body %}
+	<div class="flex justify-center">
+		<div class="flex flex-col items-center bg-white overflow-x-auto max-w-3xl shadow-md sm:rounded-lg">
+			<h1 class="m-4 text-xl font-medium text-gray-900 dark:text-white">Mon panier</h1>
+			<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+				<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+					<tr>
+						<th scope="col" class="py-3 px-6">
+							Produit(s)
+						</th>
+						<th scope="col" class="py-3 px-6">
+							Catégorie
+						</th>
+						<th scope="col" class="py-3 px-6">
+							Prix
+						</th>
+						<th scope="col" class="py-3 px-6">
+							Quantité
+						</th>
+						<th scope="col" class="py-3 px-6">
+							Total
+						</th>
+						<th scope="col" class="py-3 px-6">
+							Action
+						</th>
+					</tr>
+				</thead>
+				{% for element in dataPanier %}
+					<tbody>
+						<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+							<th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+								{{ element.product.name }}
+							</th>
+							<td class="py-4 px-6">
+								{{ element.product.category.name }}
+							</td>
+							<td class="py-4 px-6">
+								{{ element.product.price / 100 }}
+								€
+							</td>
+							<td class="py-4 px-6 text-center">
+								<a href="{{ path('cart_add', {"id": element.product.id}) }}">
+									<svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+									</svg>
+								</a>
+								{{ element.quantity }}
+								<a href="{{ path('cart_remove', {"id": element.product.id}) }}">
+									<svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+									</svg>
+								</a>
+							</td>
+							<td class="py-4 px-6">
+								{{ (element.quantity * element.product.price) / 100 }}
+								€
+							</td>
+							<td class="py-4 px-6 text-center">
+								<a href="{{ path('cart_delete', {"id": element.product.id}) }}">
+									<svg class="w-6 h-6 inline" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+									</svg>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</a>
+			</td>
+		</tr>
+	</tbody>
+{% else %}
+	<p>Votre panier est vide !</p>
+{% endfor %}
+<tfoot>
+	<tr class="font-semibold text-gray-900 dark:text-white">
+		<th scope="col" class="py-3 px-6 text-base">Total</th>
+		<td class="py-3 px-6"></td>
+		<td class="py-3 px-6"></td>
+		<td class="py-3 px-6"></td>
+		<td class="py-3 px-6">{{ total / 100 }}
+			€</td>
+	</tr>
+</tfoot></table></div></div>{% endblock %}
