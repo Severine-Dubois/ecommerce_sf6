@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ForgotPasswordFormType;
+use App\Form\ResetPasswordFormType;
 use App\Repository\UserRepository;
 use App\Service\SendMailService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -116,7 +117,29 @@ class SecurityController extends AbstractController
         $user = $userRepository->findOneByResetToken($token);
 
         if($user) {
+            $form = $this->createForm(ResetPasswordFormType::class);
 
+            $form->handleRequest($request);
+            if($form->isSubmitted() && $form->isValid()){
+                // On efface le token
+                $user->setResetToken('');
+                $user->setPassword(
+                    $passwordHasher->hashPassword(
+                        $user,
+                        $form->get('password')->getData(),
+                    )
+                );
+
+                $em->persist($user);
+                $em->flush();
+
+                $this->addFlash('green', 'Mot de passe réinitialisé');
+                return $this->redirectToRoute('login');
+            }
+
+            return $this->render('security/reset_password.html.twig',[
+                'resetPassForm' => $form->createView(),
+            ]);
         }
 
         $this->addFlash('red', 'Un problème est survenu');
