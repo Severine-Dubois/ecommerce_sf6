@@ -1,26 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}| Accueil{% endblock %}
+{% block title %}| Accueil
+{% endblock %}
 
 {% block body %}
-    <div class="m-8">
-        <h1>Bienvenue sur e-commerce !</h1>
-    </div>
-    
-    <div class="h-screen flex flex-col">
-        {% for category in categories %}
-            {% if category.parent == null %}
-                <div class="my-4 mx-4">
-                    <h2>{{ category.name }}</h2>
-                </div>
-            {% else %}
-                   <div class="my-4 mx-4 p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                        <h3 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{{ category.name }}</h3>
-                        <a href="{{ path('categories_list', {slug: category.slug}) }}" class="inline-flex items-center text-blue-600 hover:underline">
-                            Voir nos produits
-                        </a>
-                    </div>
-            {% endif %}
-        {% endfor %}
-    </div>
+	<div class="m-8">
+		<h1>Bienvenue sur e-commerce !</h1>
+	</div>
+
+	<div class="h-screen flex flex-col">
+		{% for category in categories %}
+			{% if category.parent == null %}
+				<div class="my-4 mx-4">
+					<h2>{{ category.name }}</h2>
+				</div>
+			{% else %}
+				<div class="my-4 mx-4 p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+					<h3 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{{ category.name }}</h3>
+					<a href="{{ path('categories_list', {slug: category.slug}) }}" class="inline-flex items-center text-blue-600 hover:underline">
+						Voir nos produits
+					</a>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
 {% endblock %}

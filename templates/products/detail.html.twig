@@ -1,6 +1,49 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Détails du {{ product.name }}{% endblock %}
-{% block body %}
-    <h1>Le produit {{ product.name }}</h1>
+{% block title %}Détails de
+	{{ product.name }}
 {% endblock %}
+{% block body %}
+	<section class="flex justify-center m-8">
+		<div class="max-w-xl bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+			{% for image in product.images %}
+				<img
+				class="rounded-t-lg" src="{{ asset('assets/uploads/') ~ image.name }}" alt=""/>
+			{# todo créer un carousel d'images #}
+			{% endfor %}
+			<div class="p-5">
+				<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ product.name }}</h5>
+				<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Catégorie :
+					{{ product.category.name }}</p>
+				<p class="mb-3 font-bold text-gray-700 dark:text-gray-400">{{ product.price / 100 }}
+					€</p>
+				<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ product.description }}</p>
+				<div class="flex-auto flex space-x-4">
+					{% if product.stock > 0 %}
+						<button class="h-10 px-6 font-semibold rounded-md bg-black text-white" type="submit">
+							Acheter
+						</button>
+						<button class="h-10 px-6 font-semibold rounded-md border border-slate-200 text-slate-900" type="button">
+							Ajouter au panier
+						</button>
+					{% else %}
+						<p>
+							<svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+							</svg>
+							<span class="sr-only text-red-700">Info</span>
+							<div>
+								<span class="font-medium text-red-700">
+									Temporairement en rupture de stock
+								</span>
+							</div>
+						</p>
+						<button class="h-10 px-6 font-semibold rounded-md bg-black text-white" type="button">
+							Créer une alerte
+						</button>
+					{% endif %}
+				</div>
+			</a>
+		</div>
+	</div>
+</section>{% endblock %}

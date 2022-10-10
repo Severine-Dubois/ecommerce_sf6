@@ -1,5 +1,7 @@
 <h1>Activez votre compte</h1>
-<p>Bonjour {{ user.firstname }}, nous vous remercions de vous êtes inscrit(e) !</p>
-<p>Afin d'accéder à nos services, veuillez vérifier votre adresse mail
-avec le lien ici : <a href="{{ absolute_url(path('verify_user', {token: token})) }}">{{ absolute_url(path('verify_user', {token: token})) }}</a></p>
+<p>Bonjour
+	{{ user.firstname }}, nous vous remercions de vous êtes inscrit(e) !</p>
+<p>Afin d'accéder à nos services, veuillez vérifier votre adresse mail avec le lien ici :
+	<a href="{{ absolute_url(path('verify_user', {token: token})) }}">{{ absolute_url(path('verify_user', {token: token})) }}</a>
+</p>
 <p>Ce lien expirera dans 3h</p>

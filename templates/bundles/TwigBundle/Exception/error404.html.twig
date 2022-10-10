@@ -1,14 +1,16 @@
 {% extends "base.html.twig" %}
 
-{% block title %} | Page non trouvée{% endblock %}
+{% block title %}
+	| Page non trouvée
+{% endblock %}
 {% block body %}
-<section class="flex justify-center m-8">
-<div class="grow p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <h1 class="text-xl mb-4 font-medium text-gray-900 dark:text-white">Page non trouvée !</h1>
+	<section class="flex justify-center m-8">
+		<div class="grow p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
+			<h1 class="text-xl mb-4 font-medium text-gray-900 dark:text-white">Page non trouvée !</h1>
 
-        <p>Oups ! On dirait que cette page n'existe pas :'(
-        <a href="{{ path('main') }}" class="text-blue-700 hover:underline dark:text-blue-500">Retour à l'Accueil</a>
-        </p>
-    </div>
-</section>
+			<p>Oups ! On dirait que cette page n'existe pas :'(
+				<a href="{{ path('main') }}" class="text-blue-700 hover:underline dark:text-blue-500">Retour à l'Accueil</a>
+			</p>
+		</div>
+	</section>
 {% endblock %}

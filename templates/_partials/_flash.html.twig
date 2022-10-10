@@ -1,10 +1,9 @@
 {% for label, messages in app.flashes %}
-    {% for message in messages %}
-        <div id="warning-window" class="flex flex-column justify-center m-4">
-            <div class="text-center p-4 mb-4 text-sm text-{{ label }}-700 bg-{{ label }}-100 rounded-lg dark:bg-{{ label }}-200 dark:text-{{ label }}-800" role="alert">
-            <span class="font-medium">{{ message|raw }}</span>
-            </div>
-        </div>
-     {% endfor %}
+	{% for message in messages %}
+		<div id="warning-window" class="flex flex-column justify-center m-4">
+			<div class="text-center p-4 mb-4 text-sm text-{{ label }}-700 bg-{{ label }}-100 rounded-lg dark:bg-{{ label }}-200 dark:text-{{ label }}-800" role="alert">
+				<span class="font-medium">{{ message|raw }}</span>
+			</div>
+		</div>
+	{% endfor %}
 {% endfor %}
-

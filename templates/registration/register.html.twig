@@ -1,43 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}| Inscription{% endblock %}
+{% block title %}| Inscription
+{% endblock %}
 
 {% block body %}
 
-<section class="flex justify-center m-8">
-<div class="grow p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
-    <h1 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">S'inscrire</h1>
+	<section class="flex justify-center m-8">
+		<div class="grow p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
+			<h1 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">S'inscrire</h1>
 
-    {{ form_start(registrationForm, {'attr': {'class': 'space-y-6'}}) }}
+			{{ form_start(registrationForm, {'attr': {'class': 'space-y-6'}}) }}
 
 
-    <fieldset>
-        <legend class="my-2 underline">Mon identité :</legend> 
-        {{ form_row(registrationForm.firstname) }}
-        {{ form_row(registrationForm.lastname) }}
-    </fieldset>
+			<fieldset>
+				<legend class="my-2 underline">Mon identité :</legend>
+				{{ form_row(registrationForm.firstname) }}
+				{{ form_row(registrationForm.lastname) }}
+			</fieldset>
 
-    <fieldset>
-        <legend class="my-2 underline">Mes coordonnées :</legend>
-        {{ form_row(registrationForm.address) }}
-        {{ form_row(registrationForm.zipcode) }}
-        {{ form_row(registrationForm.city) }}
-    </fieldset>
+			<fieldset>
+				<legend class="my-2 underline">Mes coordonnées :</legend>
+				{{ form_row(registrationForm.address) }}
+				{{ form_row(registrationForm.zipcode) }}
+				{{ form_row(registrationForm.city) }}
+			</fieldset>
 
-    <fieldset>
-        <legend class="my-2 underline">Mes identifiants :</legend>
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
+			<fieldset>
+				<legend class="my-2 underline">Mes identifiants :</legend>
+				{{ form_row(registrationForm.email) }}
+				{{ form_row(registrationForm.plainPassword, {
             label: 'Mot de passe'
         }) }}
-    </fieldset>
-        {{ form_row(registrationForm.RGPDConsent) }}
+			</fieldset>
+			{{ form_row(registrationForm.RGPDConsent) }}
 
-        <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">S'inscrire</button>
-    {{ form_end(registrationForm) }}
+			<button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">S'inscrire</button>
+			{{ form_end(registrationForm) }}
 
 
-</div>
-</section>
+		</div>
+	</section>
 
 {% endblock %}
